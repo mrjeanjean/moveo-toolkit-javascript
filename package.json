@@ -1,0 +1,29 @@
+{
+  "name": "moveo-toolkit",
+  "version": "0.1.8",
+  "description": "Some small things useful for integration (tooltip, popup...)",
+  "main": "dist/moveo-toolkit.js",
+  "module": "dist/moveo-toolkit.esm.js",
+  "browser": "dist/moveo-toolkit.js",
+  "style": "dist/moveo-toolkit.css",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "pretest": "npm run build"
+  },
+  "author": "moveo",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "postcss-import": "^11.1.0",
+    "rollup": "^0.55.5",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-postcss": "^1.2.8",
+    "rollup-plugin-postcss-export": "^1.0.3"
+  }
+}
