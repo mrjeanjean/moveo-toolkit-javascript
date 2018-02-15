@@ -1,8 +1,8 @@
 {
   "name": "moveo-toolkit",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Some small things useful for integration (tooltip, popup...)",
-  "main": "dist/moveo-toolkit.js",
+  "main": "dist/moveo-toolkit.cjs.js",
   "module": "dist/moveo-toolkit.esm.js",
   "browser": "dist/moveo-toolkit.js",
   "style": "dist/moveo-toolkit.css",

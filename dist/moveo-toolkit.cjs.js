@@ -1,3 +1,7 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -333,4 +337,6 @@ var Tooltip = function () {
 //TODO: npm install animate.css
 //TODO: Replace css by scss files
 
-export { Popup, SelectStyler, Tooltip };
+exports.Popup = Popup;
+exports.SelectStyler = SelectStyler;
+exports.Tooltip = Tooltip;
