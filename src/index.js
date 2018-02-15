@@ -1,7 +1,4 @@
-import './css/style.css';
-
-//TODO: npm install animate.css
-//TODO: Replace css by scss files
+import './css/styles.scss';
 
 import Popup from './js/components/Popup';
 import SelectStyler from './js/components/SelectStyler';

@@ -16,14 +16,16 @@
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
+    "animate.css": "^3.6.1",
+    "autoprefixer": "^8.0.0",
     "babel-core": "^6.26.0",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-es2015-rollup": "^3.0.0",
+    "node-sass": "^4.7.2",
     "postcss-import": "^11.1.0",
     "rollup": "^0.55.5",
     "rollup-plugin-babel": "^3.0.3",
-    "rollup-plugin-postcss": "^1.2.8",
-    "rollup-plugin-postcss-export": "^1.0.3"
+    "rollup-plugin-postcss": "^1.2.8"
   }
 }

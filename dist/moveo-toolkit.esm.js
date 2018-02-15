@@ -330,7 +330,4 @@ var Tooltip = function () {
     return Tooltip;
 }();
 
-//TODO: npm install animate.css
-//TODO: Replace css by scss files
-
 export { Popup, SelectStyler, Tooltip };

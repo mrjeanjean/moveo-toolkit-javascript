@@ -1,6 +1,7 @@
 import babel from 'rollup-plugin-babel';
 import postcss from 'rollup-plugin-postcss';
 import atImport from 'postcss-import';
+import autoprefixer from 'autoprefixer';
 
 export default [{
     input: 'src/index.js',
@@ -15,7 +16,8 @@ export default [{
         postcss({
             extract: true,
             plugins: [
-                atImport()
+                atImport(),
+                autoprefixer()
             ]
         }),
         babel({
