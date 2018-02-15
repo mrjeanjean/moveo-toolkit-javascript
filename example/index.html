@@ -9,13 +9,13 @@
 <body>
 <script src="./../dist/moveo-toolkit.js"></script>
 <script>
-	MoveoToolkit.Popup.open("Joie !", {
-		title: 'Est-ce de la joie ?',
-		closeLabel: 'Prout',
+	MoveoToolkit.Popup.open("HTML content. Simple and sharped.", {
+		title: 'Popup Title',
+		closeLabel: 'Hide',
 		animationOpen: 'fadeInDown',
 		animationClose: 'fadeOutUp',
 		onClose: function(){
-			console.log("CLOSE !!")
+			console.log("Popup closed...")
 		}
 	});
 </script>
