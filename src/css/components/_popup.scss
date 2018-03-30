@@ -24,7 +24,7 @@
 .popup-inner {
   background-color: #fff;
   animation-duration: 0.4s;
-  animation-delay: 0;
+  animation-delay: 0s;
 }
 
 .popup-header {
@@ -48,17 +48,25 @@
   padding-top: 0;
 }
 
-.popup input[type='text'] {
+.popup input[type='text'],
+.popup input[type='password'],
+.popup input[type='email'],
+.popup input[type='tel']{
   padding: 10px 10px;
+  margin-bottom: 20px;
   border: 1px #e2e2e2 solid;
   width: 100%;
   display: block;
   font-size: 18px;
-}
 
-.popup input[type='text']:focus {
-  border: 1px #e2e2e2 solid;
-  outline-width: 0;
+  &:last-of-type{
+    margin-bottom: 0;
+  }
+
+  &:focus {
+    border: 1px #e2e2e2 solid;
+    outline-width: 0;
+  }
 }
 
 .popup-footer {

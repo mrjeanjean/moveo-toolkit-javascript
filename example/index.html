@@ -7,10 +7,16 @@
 	<link rel="stylesheet" href="./../dist/moveo-toolkit.css">
 </head>
 <body>
-<div class="element">Mon element</div>
+<div class="element">
+	<form>
+		<input type="text" placeholder="Login">
+		<input type="password" placeholder="Mot de passe">
+
+	</form>
+</div>
 <script src="./../dist/moveo-toolkit.js"></script>
 <script>
-	MoveoToolkit.Popup.open("HTML content. Simple and sharped.", {
+	MoveoToolkit.Popup.open(document.querySelector(".element"), {
 		title: 'Popup Title',
 		closeLabel: 'Hide',
 		animationOpen: 'fadeInDown',
