@@ -89,13 +89,11 @@ var Popup = function () {
             var $popupFooter = document.createElement("div");
             $popupFooter.classList.add("popup-footer");
 
-            var $popupClose = document.createElement("button");
-            $popupClose.classList.add("popup-button-close");
-            $popupClose.innerText = this.params.closeLabel;
+            var $footerContent = this.getFooter();
 
             this.setHeader($popupInner);
             $popupInner.appendChild($popupContent);
-            $popupFooter.appendChild($popupClose);
+            $popupFooter.appendChild($footerContent);
             $popupInner.appendChild($popupFooter);
             $popup.appendChild($popupInner);
 
@@ -112,6 +110,14 @@ var Popup = function () {
             $popupHeader.classList.add("popup-header");
             $popupHeader.innerHTML = this.params.title;
             $popupInner.appendChild($popupHeader);
+        }
+    }, {
+        key: "getFooter",
+        value: function getFooter() {
+            var $buttonClose = document.createElement("button");
+            $buttonClose.classList.add("popup-button-close");
+            $buttonClose.innerText = this.params.closeLabel;
+            return $buttonClose;
         }
     }, {
         key: "playAnimation",

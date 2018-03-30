@@ -54,13 +54,11 @@ class Popup {
         let $popupFooter = document.createElement("div");
         $popupFooter.classList.add("popup-footer");
 
-        let $popupClose = document.createElement("button");
-        $popupClose.classList.add("popup-button-close");
-        $popupClose.innerText = this.params.closeLabel;
+        let $footerContent = this.getFooter();
 
         this.setHeader($popupInner);
         $popupInner.appendChild($popupContent);
-        $popupFooter.appendChild($popupClose);
+        $popupFooter.appendChild($footerContent);
         $popupInner.appendChild($popupFooter);
         $popup.appendChild($popupInner);
 
@@ -76,6 +74,13 @@ class Popup {
         $popupHeader.classList.add("popup-header");
         $popupHeader.innerHTML = this.params.title;
         $popupInner.appendChild($popupHeader);
+    }
+
+    getFooter() {
+        let $buttonClose = document.createElement("button");
+        $buttonClose.classList.add("popup-button-close");
+        $buttonClose.innerText = this.params.closeLabel;
+        return $buttonClose;
     }
 
     playAnimation(animationName, callback) {
@@ -121,6 +126,8 @@ class Popup {
 
         document.removeEventListener("keyup", this.keyPressed.bind(this));
     }
+
+
 }
 
 export default Popup;
