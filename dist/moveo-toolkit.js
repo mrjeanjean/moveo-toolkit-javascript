@@ -45,6 +45,7 @@ var Popup = function () {
                 title: null,
                 animationOpen: "fadeIn",
                 animationClose: "fadeOut",
+                popupClass: "default",
                 onClose: function onClose() {},
                 onOpen: function onOpen() {},
                 data: {}
@@ -79,6 +80,7 @@ var Popup = function () {
 
             var $popup = document.createElement("div");
             $popup.classList.add("popup");
+            $popup.classList.add("popup-" + this.params.popupClass);
 
             var $popupInner = document.createElement("div");
             $popupInner.classList.add("popup-inner");
