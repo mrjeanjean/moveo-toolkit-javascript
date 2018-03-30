@@ -79,7 +79,12 @@ var Popup = function () {
 
             var $popupContent = document.createElement("div");
             $popupContent.classList.add("popup-content");
-            $popupContent.innerHTML = content;
+
+            if (content instanceof Element) {
+                $popupContent.appendChild(content);
+            } else {
+                $popupContent.innerHTML = content;
+            }
 
             var $popupFooter = document.createElement("div");
             $popupFooter.classList.add("popup-footer");
@@ -276,31 +281,39 @@ var SelectStyler = function () {
 }();
 
 var Tooltip = function () {
-    function Tooltip($tooltipElement, $tooltipContent) {
+    function Tooltip($element, params) {
         classCallCheck(this, Tooltip);
 
-        this.$tooltipElement = $tooltipElement;
-        this.tooltipContent = $tooltipContent;
-
+        this.$parent = $element;
+        this.params = this.mergeParams(params);
+        this.$tooltip = this.getTemplate();
         this.initTooltip();
     }
 
     createClass(Tooltip, [{
+        key: "mergeParams",
+        value: function mergeParams(params) {
+            return Object.assign({
+                content: "",
+                animationShow: "fadeInUp",
+                animationHide: "fadeOut"
+            }, params || {});
+        }
+    }, {
         key: "initTooltip",
         value: function initTooltip() {
             var _this = this;
 
-            this.$tooltipSpan = this.getTemplate();
-
-            this.$tooltipElement.classList.add("tooltip-parent");
-            this.$tooltipElement.appendChild(this.$tooltipSpan);
-
-            this.$tooltipElement.addEventListener("mouseenter", function () {
-                _this.$tooltipElement.classList.add("tooltip-active");
+            this.$parent.appendChild(this.$tooltip);
+            this.$parent.addEventListener("mouseenter", function () {
+                _this.$tooltip.style.display = "block";
+                _this.playAnimation(_this.params.animationShow);
             });
 
-            this.$tooltipElement.addEventListener("mouseleave", function () {
-                _this.$tooltipElement.classList.remove("tooltip-active");
+            this.$parent.addEventListener("mouseleave", function () {
+                _this.playAnimation(_this.params.animationHide, function () {
+                    _this.$tooltip.style.display = "none";
+                });
             });
         }
     }, {
@@ -308,22 +321,26 @@ var Tooltip = function () {
         value: function getTemplate() {
             var $tooltipSpan = document.createElement("span");
             $tooltipSpan.classList.add("tooltip");
-            $tooltipSpan.innerText = this.tooltipContent;
+            $tooltipSpan.innerText = this.params.content;
 
             return $tooltipSpan;
         }
-    }], [{
-        key: "init",
-        value: function init($tooltipElement) {
-            var content = $tooltipElement.getAttribute("data-tooltip-content");
-            new Tooltip($tooltipElement, content);
-        }
     }, {
-        key: "initAll",
-        value: function initAll($selector) {
-            var $tooltips = document.querySelectorAll("[data-tooltip-content]");
-            $tooltips.forEach(function ($tooltip) {
-                Tooltip.init($tooltip);
+        key: "playAnimation",
+        value: function playAnimation(animationName, callback) {
+            var _this2 = this;
+
+            var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+
+            this.$tooltip.classList.add("animated", animationName);
+
+            animationEnd.split(" ").map(function (type) {
+                _this2.$tooltip.addEventListener(type, function () {
+                    _this2.$tooltip.classList.remove("animated", animationName);
+                    if (typeof callback === "function") {
+                        callback();
+                    }
+                }, { once: true });
             });
         }
     }]);

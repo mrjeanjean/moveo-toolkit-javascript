@@ -1,44 +1,54 @@
 class Tooltip{
-    constructor($tooltipElement, $tooltipContent){
-        this.$tooltipElement = $tooltipElement;
-        this.tooltipContent = $tooltipContent;
-
+    constructor($element, params){
+        this.$parent = $element;
+        this.params = this.mergeParams(params);
+        this.$tooltip = this.getTemplate();
         this.initTooltip();
     }
 
+    mergeParams(params) {
+        return Object.assign({
+            content: "",
+            animationShow: "fadeInUp",
+            animationHide: "fadeOut"
+        }, params || {});
+    }
+
     initTooltip(){
-        this.$tooltipSpan = this.getTemplate();
-
-        this.$tooltipElement.classList.add("tooltip-parent");
-        this.$tooltipElement.appendChild(this.$tooltipSpan);
-
-        this.$tooltipElement.addEventListener("mouseenter", ()=>{
-            this.$tooltipElement.classList.add("tooltip-active");
+        this.$parent.appendChild(this.$tooltip);
+        this.$parent.addEventListener("mouseenter", ()=>{
+            this.$tooltip.style.display = "block";
+            this.playAnimation(this.params.animationShow);
         });
 
-        this.$tooltipElement.addEventListener("mouseleave", ()=>{
-            this.$tooltipElement.classList.remove("tooltip-active");
+        this.$parent.addEventListener("mouseleave", ()=>{
+            this.playAnimation(this.params.animationHide, () => {
+                this.$tooltip.style.display = "none";
+            });
         });
     }
 
     getTemplate(){
         let $tooltipSpan = document.createElement("span");
         $tooltipSpan.classList.add("tooltip");
-        $tooltipSpan.innerText = this.tooltipContent;
+        $tooltipSpan.innerText = this.params.content;
 
         return $tooltipSpan;
     }
 
-    static init($tooltipElement){
-        let content = $tooltipElement.getAttribute("data-tooltip-content");
-        new Tooltip($tooltipElement, content);
-    }
+    playAnimation(animationName, callback) {
+        let animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
 
-    static initAll($selector){
-        let $tooltips = document.querySelectorAll("[data-tooltip-content]");
-        $tooltips.forEach(($tooltip)=>{
-            Tooltip.init($tooltip);
-        })
+        this.$tooltip.classList.add("animated", animationName);
+
+        animationEnd.split(" ").map((type)=>{
+            this.$tooltip.addEventListener(type, ()=>{
+                this.$tooltip.classList.remove("animated", animationName);
+                if(typeof callback === "function"){
+                    callback();
+                }
+            }, {once: true})
+        });
     }
 }
 

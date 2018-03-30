@@ -9,8 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "pretest": "npm run build"
+    "dev": "rollup -c -w"
   },
   "author": "moveo",
   "license": "ISC",

@@ -44,7 +44,12 @@ class Popup {
 
         let $popupContent = document.createElement("div");
         $popupContent.classList.add("popup-content");
-        $popupContent.innerHTML = content;
+
+        if(content instanceof Element){
+            $popupContent.appendChild(content)
+        }else{
+            $popupContent.innerHTML = content
+        }
 
         let $popupFooter = document.createElement("div");
         $popupFooter.classList.add("popup-footer");

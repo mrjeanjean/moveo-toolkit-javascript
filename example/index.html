@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="./../dist/moveo-toolkit.css">
 </head>
 <body>
+<div class="element">Mon element</div>
 <script src="./../dist/moveo-toolkit.js"></script>
 <script>
 	MoveoToolkit.Popup.open("HTML content. Simple and sharped.", {
@@ -17,6 +18,10 @@
 		onClose: function(){
 			console.log("Popup closed...")
 		}
+	});
+	let element = document.querySelector(".element");
+	new MoveoToolkit.Tooltip(element, {
+		content: "Merci"
 	});
 </script>
 </body>
