@@ -439,6 +439,8 @@ var ScrollSpy = function () {
                 return _this.isInView(item);
             });
 
+            if (itemsInView.length <= 0) return;
+
             var currentItem = itemsInView[0].getAttribute("data-spy");
 
             if (currentItem != this.currentVisibleItem) {

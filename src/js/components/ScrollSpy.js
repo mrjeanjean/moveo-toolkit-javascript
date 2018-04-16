@@ -32,6 +32,8 @@ class ScrollSpy {
             return this.isInView(item);
         });
 
+        if(itemsInView.length <= 0) return;
+
         let currentItem = itemsInView[0].getAttribute("data-spy");
 
         if(currentItem != this.currentVisibleItem){
