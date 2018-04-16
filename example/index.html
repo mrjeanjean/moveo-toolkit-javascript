@@ -5,29 +5,160 @@
 	<title>Title</title>
 	<link href="https://fonts.googleapis.com/css?family=Overpass" rel="stylesheet">
 	<link rel="stylesheet" href="./../dist/moveo-toolkit.css">
+
+	<style>
+		section {
+			font-size: 18px;
+			line-height: 1.6;
+			padding: 60px;
+			border: 3px solid;
+			color: #8c8c8c;
+			border-radius: 10px;
+			margin: 60px;
+		}
+
+		[class^=col]{
+			float: left;
+		}
+
+		.col-sidebar{
+			padding-top: 60px;
+			width: 250px;
+			position: fixed;
+		}
+
+		.col-content{
+			width: calc(100% - 250px);
+			padding-left: 250px;
+		}
+
+		ul.menu{
+			padding-left: 0;
+			list-style: none;
+			margin: 0;
+			border-radius: 10px;
+			overflow: hidden;
+		}
+
+		ul.menu li{
+			padding: 15px 15px;
+			background-color: #e6e6e6;
+			border-bottom:solid #fff 2px;
+		}
+
+		ul.menu li.active{
+			background-color: #8e8e8e;
+			color: #ffffff;
+		}
+		.inner{
+			max-width:1000px;
+			margin: 0 auto;
+		}
+	</style>
 </head>
 <body>
-<div class="element">
-	<form>
-		<input type="text" placeholder="Login">
-		<input type="password" placeholder="Mot de passe">
-	</form>
+<div class="inner">
+<div class="col-sidebar">
+	<ul class="menu">
+		<li data-current="section-1" class="active"><a href="#section-1">Section 1</a></li>
+		<li data-current="section-2"><a href="#section-2">Section 2</a></li>
+		<li data-current="section-3"><a href="#section-3">Section 3</a></li>
+		<li data-current="section-4"><a href="#section-4">Section 4</a></li>
+	</ul>
+</div>
+<div class="col-content">
+	<section data-spy="section-1" id="section-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque
+		autem consequuntur culpa cupiditate dignissimos dolorem dolores doloribus eaque eius error facere fugiat fugit iste
+		molestias nisi non nostrum, officiis pariatur possimus quibusdam quidem recusandae rem repellendus sunt velit vitae
+		voluptas! Accusantium assumenda at nostrum nulla tempore. Accusantium, animi aut consequuntur dolore doloremque
+		dolores earum expedita inventore tenetur totam unde! Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+		Adipisci atque autem consequuntur culpa cupiditate dignissimos dolorem dolores doloribus eaque eius error facere
+		fugiat fugit iste molestias nisi non nostrum, officiis pariatur possimus quibusdam quidem recusandae rem repellendus
+		sunt velit vitae voluptas! Accusantium assumenda at nostrum nulla tempore. Accusantium, animi aut consequuntur
+		dolore doloremque dolores earum expedita inventore tenetur totam unde! Lorem ipsum dolor sit amet, consectetur
+		adipisicing elit. Adipisci atque autem consequuntur culpa cupiditate dignissimos dolorem dolores doloribus eaque
+		eius error facere fugiat fugit iste molestias nisi non nostrum, officiis pariatur possimus quibusdam quidem
+		recusandae rem repellendus sunt velit vitae voluptas! Accusantium assumenda at nostrum nulla tempore. Accusantium,
+		animi aut consequuntur dolore doloremque dolores earum expedita inventore tenetur totam unde!
+	</section>
+	<section data-spy="section-2" id="section-2">Aut dolores maiores porro? Debitis, dolorem eveniet ex expedita nihil quis
+		soluta tenetur vitae! Dolores eligendi exercitationem facere. Aperiam assumenda consequatur eius et molestias
+		nostrum officia quia quis unde voluptate! Dolor eaque eligendi ipsa perspiciatis possimus? Fugit nihil, recusandae!
+		Accusamus amet aut cumque, debitis dolore dolorum eveniet fugit mollitia neque odio pariatur quo recusandae repellat
+		totam voluptatum. Eos exercitationem, veritatis! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci
+		atque autem consequuntur culpa cupiditate dignissimos dolorem dolores doloribus eaque eius error facere fugiat fugit
+		iste molestias nisi non nostrum, officiis pariatur possimus quibusdam quidem recusandae rem repellendus sunt velit
+		vitae voluptas! Accusantium assumenda at nostrum nulla tempore. Accusantium, animi aut consequuntur dolore
+		doloremque dolores earum expedita inventore tenetur totam unde!
+	</section>
+	<section data-spy="section-3" id="section-3">Aliquid animi dolore explicabo nam nihil nulla officiis tempora! Ad
+		eligendi incidunt inventore ratione voluptas? Accusantium amet aperiam assumenda autem culpa distinctio laudantium,
+		magnam non provident quas repellat repellendus repudiandae totam. Adipisci autem blanditiis corporis dicta dolorem
+		error esse eum expedita explicabo facilis impedit laudantium magnam, neque omnis quibusdam quidem quod reiciendis
+		repellendus repudiandae sed sunt, vel velit voluptas, voluptatem! Lorem ipsum dolor sit amet, consectetur
+		adipisicing elit. Adipisci atque autem consequuntur culpa cupiditate dignissimos dolorem dolores doloribus eaque
+		eius error facere fugiat fugit iste molestias nisi non nostrum, officiis pariatur possimus quibusdam quidem
+		recusandae rem repellendus sunt velit vitae voluptas! Accusantium assumenda at nostrum nulla tempore. Accusantium,
+		animi aut consequuntur dolore doloremque dolores earum expedita inventore tenetur totam unde!
+	</section>
+	<section data-spy="section-4" id="section-4">At blanditiis corporis ducimus eius est, et eum facere facilis impedit
+		ipsam iusto molestiae, mollitia nisi perspiciatis quae quia, quod quos rem similique voluptas? A ad architecto
+		commodi culpa dolores doloribus earum enim est eveniet expedita molestiae molestias numquam odit officiis
+		perspiciatis possimus praesentium quibusdam quos rem rerum saepe sequi veritatis vero, voluptatem, voluptatibus!
+		Amet atque obcaecati reiciendis unde veniam! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci
+		atque autem consequuntur culpa cupiditate dignissimos dolorem dolores doloribus eaque eius error facere fugiat fugit
+		iste molestias nisi non nostrum, officiis pariatur possimus quibusdam quidem recusandae rem repellendus sunt velit
+		vitae voluptas! Accusantium assumenda at nostrum nulla tempore. Accusantium, animi aut consequuntur dolore
+		doloremque dolores earum expedita inventore tenetur totam unde!
+	</section>
+</div>
 </div>
 <script src="./../dist/moveo-toolkit.js"></script>
 <script>
-	MoveoToolkit.Popup.open(document.querySelector(".element"), {
-		title: 'Popup Title',
-		closeLabel: 'Hide',
-		animationOpen: 'fadeInDown',
-		animationClose: 'fadeOutUp',
-		popupClass: 'login',
-		onClose: function(){
-			console.log("Popup closed...")
+	/*MoveoToolkit.Popup.open(document.querySelector(".element"), {
+	 title: 'Popup Title',
+	 closeLabel: 'Hide',
+	 animationOpen: 'fadeInDown',
+	 animationClose: 'fadeOutUp',
+	 popupClass: 'login',
+	 onClose: function(){
+	 console.log("Popup closed...")
+	 }
+	 });*/
+
+	function throttle(callback, wait, context = this) {
+		let timeout = null
+		let callbackArgs = null
+
+		const later = () => {
+			callback.apply(context, callbackArgs)
+			timeout = null
 		}
-	});
-	let element = document.querySelector(".element");
-	new MoveoToolkit.Tooltip(element, {
-		content: "Merci"
+
+		return function() {
+			if (!timeout) {
+				callbackArgs = arguments
+				timeout = setTimeout(later, wait)
+			}
+		}
+	}
+
+	/*window.addEventListener("scroll", function(){
+		let menu = document.querySelector(".menu");
+		let scrollTop = windowTop = window.pageYOffset || document.documentElement.scrollTop;
+		menu.style.transform = `translateY(${scrollTop}px)`
+	});*/
+
+
+	new MoveoToolkit.ScrollSpy({
+		onCurrentItemChange: function (id, item) {
+			let links = document.querySelectorAll("[data-current]");
+			links.forEach(function(link){
+				link.classList.remove("active")
+			})
+			let currentLinkActive = document.querySelector(`[data-current=${id}`)
+			currentLinkActive.classList.add('active');
+		}
 	});
 </script>
 </body>
