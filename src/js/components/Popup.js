@@ -12,8 +12,8 @@ class Popup {
             animationOpen: "fadeIn",
             animationClose: "fadeOut",
             popupClass: "default",
-            onClose: () => {},
-            onOpen: () => {},
+            onClose: this.onClose,
+            onOpen: this.onOpen,
             data: {}
         }, params || {});
     }
@@ -21,16 +21,24 @@ class Popup {
     open(){
         document.body.appendChild(this.$popup);
         this.playAnimation(this.params.animationOpen, ()=>{
-            this.params.onOpen();
+            this.params.onOpen(this.$popup);
         });
     }
 
     close(){
         this.removeEvents();
         this.playAnimation(this.params.animationClose, ()=>{
-            this.params.onClose();
+            this.params.onClose(this.$popup);
             document.body.removeChild(this.$popup);
         });
+    }
+
+    onOpen($popup){
+        // Can be overrided
+    }
+
+    onClose($popup){
+        // Can be overrided
     }
 
     getTemplate(content){

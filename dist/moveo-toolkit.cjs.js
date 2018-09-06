@@ -44,8 +44,8 @@ var Popup = function () {
                 animationOpen: "fadeIn",
                 animationClose: "fadeOut",
                 popupClass: "default",
-                onClose: function onClose() {},
-                onOpen: function onOpen() {},
+                onClose: this.onClose,
+                onOpen: this.onOpen,
                 data: {}
             }, params || {});
         }
@@ -56,7 +56,7 @@ var Popup = function () {
 
             document.body.appendChild(this.$popup);
             this.playAnimation(this.params.animationOpen, function () {
-                _this.params.onOpen();
+                _this.params.onOpen(_this.$popup);
             });
         }
     }, {
@@ -66,9 +66,19 @@ var Popup = function () {
 
             this.removeEvents();
             this.playAnimation(this.params.animationClose, function () {
-                _this2.params.onClose();
+                _this2.params.onClose(_this2.$popup);
                 document.body.removeChild(_this2.$popup);
             });
+        }
+    }, {
+        key: "onOpen",
+        value: function onOpen($popup) {
+            // Can be overrided
+        }
+    }, {
+        key: "onClose",
+        value: function onClose($popup) {
+            // Can be overrided
         }
     }, {
         key: "getTemplate",
