@@ -3584,10 +3584,6 @@
 .tooltip.animated {
     transition-duration: 100ms; }
 
-a {
-  text-align: left;
-  padding: 1em; }
-
 .tooltip {
   display: none;
   background-color: rgba(0, 0, 0, 0.8);
