@@ -415,6 +415,7 @@ var ScrollSpy = function () {
         this.init();
         this.params = this.mergeParams(params);
         this.currentVisibleItem = null;
+        this.spyVisibleItem();
     }
 
     createClass(ScrollSpy, [{
@@ -422,7 +423,6 @@ var ScrollSpy = function () {
         value: function init() {
             this.items = this.getItems();
             this.attachEvents();
-            this.onScroll();
         }
     }, {
         key: "mergeParams",
@@ -439,11 +439,11 @@ var ScrollSpy = function () {
     }, {
         key: "attachEvents",
         value: function attachEvents() {
-            window.addEventListener("scroll", throttle(this.onScroll.bind(this), 200, this));
+            window.addEventListener("scroll", throttle(this.spyVisibleItem.bind(this), 200, this));
         }
     }, {
-        key: "onScroll",
-        value: function onScroll() {
+        key: "spyVisibleItem",
+        value: function spyVisibleItem() {
             var _this = this;
 
             var itemsInView = Array.from(this.items).filter(function (item) {

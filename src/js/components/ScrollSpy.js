@@ -5,12 +5,12 @@ class ScrollSpy {
         this.init();
         this.params = this.mergeParams(params);
         this.currentVisibleItem = null;
+        this.spyVisibleItem();
     }
 
     init() {
         this.items = this.getItems();
         this.attachEvents();
-        this.onScroll()
     }
 
     mergeParams(params) {
@@ -25,10 +25,10 @@ class ScrollSpy {
     }
 
     attachEvents() {
-        window.addEventListener("scroll", throttle(this.onScroll.bind(this), 200, this));
+        window.addEventListener("scroll", throttle(this.spyVisibleItem.bind(this), 200, this));
     }
 
-    onScroll() {
+    spyVisibleItem() {
         let itemsInView = Array.from(this.items).filter((item)=> {
             return this.isInView(item);
         });
