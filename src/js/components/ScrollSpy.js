@@ -10,6 +10,7 @@ class ScrollSpy {
     init() {
         this.items = this.getItems();
         this.attachEvents();
+        this.onScroll()
     }
 
     mergeParams(params) {
