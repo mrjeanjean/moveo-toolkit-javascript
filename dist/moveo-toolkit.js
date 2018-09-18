@@ -422,6 +422,7 @@ var ScrollSpy = function () {
         value: function init() {
             this.items = this.getItems();
             this.attachEvents();
+            this.onScroll();
         }
     }, {
         key: "mergeParams",
