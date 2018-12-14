@@ -180,7 +180,8 @@ var Popup = function () {
     }], [{
         key: "open",
         value: function open(content, params) {
-            var popup = new Popup(content, params);
+            var popupType = params.popupType || Popup;
+            var popup = new popupType(content, params);
             popup.open();
             return popup;
         }

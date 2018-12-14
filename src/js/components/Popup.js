@@ -110,7 +110,8 @@ class Popup {
     }
 
     static open(content, params){
-        let popup = new Popup(content, params);
+        let popupType = params.popupType || Popup;
+        let popup = new popupType(content, params);
         popup.open();
         return popup;
     }
