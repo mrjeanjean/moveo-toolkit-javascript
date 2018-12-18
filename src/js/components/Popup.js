@@ -14,21 +14,25 @@ class Popup {
             popupClass: "default",
             onClose: this.onClose,
             onOpen: this.onOpen,
+            beforeOpen: ()=>{return true;},
+            beforeClose: ()=>{return true;},
             data: {}
         }, params || {});
     }
 
     open(){
+        this.params.beforeOpen(this.$popup, this);
         document.body.appendChild(this.$popup);
         this.playAnimation(this.params.animationOpen, ()=>{
-            this.params.onOpen(this.$popup);
+            this.params.onOpen(this.$popup, this);
         });
     }
 
     close(){
+        this.params.beforeClose(this.$popup, this);
         this.removeEvents();
         this.playAnimation(this.params.animationClose, ()=>{
-            this.params.onClose(this.$popup);
+            this.params.onClose(this.$popup, this);
             document.body.removeChild(this.$popup);
         });
     }

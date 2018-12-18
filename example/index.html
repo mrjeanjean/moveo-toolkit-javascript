@@ -115,7 +115,7 @@
 </div>
 <script src="./../dist/moveo-toolkit.js"></script>
 <script>
-	/*MoveoToolkit.Popup.open(document.querySelector(".element"), {
+	MoveoToolkit.Popup.open(document.querySelector(".element"), {
 	 title: 'Popup Title',
 	 closeLabel: 'Hide',
 	 animationOpen: 'fadeInDown',
@@ -123,8 +123,15 @@
 	 popupClass: 'login',
 	 onClose: function(){
 	 console.log("Popup closed...")
-	 }
-	 });*/
+	 },
+		beforeOpen: ()=>{
+				console.log("Yeah !!");
+			},
+	beforeClose: ($e, $popup)=>
+	{
+		console.log("Yeah !!", $popup);
+	}
+	 });
 
 	function throttle(callback, wait, context = this) {
 		let timeout = null

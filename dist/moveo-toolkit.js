@@ -48,6 +48,12 @@ var Popup = function () {
                 popupClass: "default",
                 onClose: this.onClose,
                 onOpen: this.onOpen,
+                beforeOpen: function beforeOpen() {
+                    return true;
+                },
+                beforeClose: function beforeClose() {
+                    return true;
+                },
                 data: {}
             }, params || {});
         }
@@ -56,9 +62,10 @@ var Popup = function () {
         value: function open() {
             var _this = this;
 
+            this.params.beforeOpen(this.$popup, this);
             document.body.appendChild(this.$popup);
             this.playAnimation(this.params.animationOpen, function () {
-                _this.params.onOpen(_this.$popup);
+                _this.params.onOpen(_this.$popup, _this);
             });
         }
     }, {
@@ -66,9 +73,10 @@ var Popup = function () {
         value: function close() {
             var _this2 = this;
 
+            this.params.beforeClose(this.$popup, this);
             this.removeEvents();
             this.playAnimation(this.params.animationClose, function () {
-                _this2.params.onClose(_this2.$popup);
+                _this2.params.onClose(_this2.$popup, _this2);
                 document.body.removeChild(_this2.$popup);
             });
         }
