@@ -481,6 +481,31 @@ var ScrollSpy = function () {
     return ScrollSpy;
 }();
 
+var Accordion = function () {
+    function Accordion($element) {
+        classCallCheck(this, Accordion);
+
+        this.current = 0;
+        this.$element = $element;
+
+        this.$element.classList.add("accordion");
+
+        this.addEvents();
+    }
+
+    createClass(Accordion, [{
+        key: "addEvents",
+        value: function addEvents() {
+            this.$element.querySelectorAll(".accordion-section").forEach(function ($section, index) {
+                $section.addEventListener('click', function () {
+                    $section.classList.toggle("open");
+                });
+            });
+        }
+    }]);
+    return Accordion;
+}();
+
 /*document.querySelectorAll(".menu a").forEach((link)=>{
     link.addEventListener("click", (e)=>{
         let anchor = e.target.getAttribute("href");
@@ -501,3 +526,4 @@ exports.Popup = Popup;
 exports.SelectStyler = SelectStyler;
 exports.Tooltip = Tooltip;
 exports.ScrollSpy = ScrollSpy;
+exports.Accordion = Accordion;

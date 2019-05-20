@@ -3712,6 +3712,14 @@
 .tooltip.animated {
     transition-duration: 100ms; }
 
+.accordion .accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 400ms; }
+
+.accordion .accordion-section.open .accordion-content {
+  max-height: 999px; }
+
 .tooltip {
   display: none;
   background-color: rgba(0, 0, 0, 0.8);

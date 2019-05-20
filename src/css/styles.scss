@@ -2,3 +2,21 @@
 
 @import "components/popup";
 @import "components/tooltip";
+@import "components/accordion";
+
+
+.accordion{
+  .accordion-content{
+    max-height: 0;
+    overflow: hidden;
+
+    transition: max-height 400ms;
+  }
+  .accordion-section.open{
+
+    .accordion-content {
+      max-height: 999px;
+    }
+
+  }
+}
