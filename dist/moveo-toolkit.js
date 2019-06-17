@@ -499,7 +499,7 @@ var Accordion = function () {
         key: "addEvents",
         value: function addEvents() {
             this.$element.querySelectorAll(".accordion-section").forEach(function ($section, index) {
-                $section.addEventListener('click', function () {
+                $section.querySelector(".accordion-title").addEventListener('click', function () {
                     $section.classList.toggle("open");
                 });
             });

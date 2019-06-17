@@ -11,9 +11,8 @@ class Accordion{
 
     addEvents(){
         this.$element.querySelectorAll(".accordion-section").forEach(($section, index)=>{
-            $section.addEventListener('click', ()=>{
+            $section.querySelector(".accordion-title").addEventListener('click', ()=>{
                 $section.classList.toggle("open");
-
             })
         })
     }
