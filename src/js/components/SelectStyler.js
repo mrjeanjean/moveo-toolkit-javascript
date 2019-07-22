@@ -1,6 +1,7 @@
 class SelectStyler {
 
-    constructor($select){
+    constructor($select, params={}){
+        this.params = this.mergeParams(params);
         this.$selectElement = $select;
         this.$selectElement.style.display = 'none';
 
@@ -70,28 +71,36 @@ class SelectStyler {
 
         let $options = this.$selectElement.querySelectorAll("option");
 
-        $options.forEach((option)=>{
-            let $option = document.createElement("li");
-            $option.textContent = option.textContent;
-            $option.setAttribute("data-option-id", option.value);
-            $option.addEventListener("click", this.onOptionSelect.bind(this));
-            $optionsList.appendChild($option);
+        $options.forEach((option, index)=>{
+            if(!this.params.hideFirst || index !== 0){
+                let $option = document.createElement("li");
+                $option.textContent = option.textContent;
+                $option.setAttribute("data-option-id", option.value);
+                $option.addEventListener("click", this.onOptionSelect.bind(this));
+                $optionsList.appendChild($option);
+            }
         });
 
 
         return $template;
     }
 
-
-    static select($select){
-        new SelectStyler($select);
+    mergeParams(params) {
+        return Object.assign({
+            hideFirst: false
+        }, params);
     }
 
-    static selectAll($selector){
+
+    static select($select, params={}){
+        new SelectStyler($select, params);
+    }
+
+    static selectAll($selector, params={}){
         let selects = document.querySelectorAll($selector);
 
         selects.forEach(($select)=>{
-            SelectStyler.select($select);
+            SelectStyler.select($select, params);
         });
     }
 

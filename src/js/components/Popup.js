@@ -1,5 +1,5 @@
 class Popup {
-    constructor(content, params){
+    constructor(content, params={}){
         this.params = this.mergeParams(params);
         this.$popup = this.getTemplate(content);
         this.addEvents();

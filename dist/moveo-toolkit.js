@@ -29,7 +29,8 @@ var createClass = function () {
 }();
 
 var Popup = function () {
-    function Popup(content, params) {
+    function Popup(content) {
+        var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
         classCallCheck(this, Popup);
 
         this.params = this.mergeParams(params);
@@ -207,8 +208,10 @@ var SelectStyler = function () {
     function SelectStyler($select) {
         var _this = this;
 
+        var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
         classCallCheck(this, SelectStyler);
 
+        this.params = this.mergeParams(params);
         this.$selectElement = $select;
         this.$selectElement.style.display = 'none';
 
@@ -285,28 +288,41 @@ var SelectStyler = function () {
 
             var $options = this.$selectElement.querySelectorAll("option");
 
-            $options.forEach(function (option) {
-                var $option = document.createElement("li");
-                $option.textContent = option.textContent;
-                $option.setAttribute("data-option-id", option.value);
-                $option.addEventListener("click", _this2.onOptionSelect.bind(_this2));
-                $optionsList.appendChild($option);
+            $options.forEach(function (option, index) {
+                if (!_this2.params.hideFirst || index !== 0) {
+                    var $option = document.createElement("li");
+                    $option.textContent = option.textContent;
+                    $option.setAttribute("data-option-id", option.value);
+                    $option.addEventListener("click", _this2.onOptionSelect.bind(_this2));
+                    $optionsList.appendChild($option);
+                }
             });
 
             return $template;
         }
+    }, {
+        key: "mergeParams",
+        value: function mergeParams(params) {
+            return Object.assign({
+                hideFirst: false
+            }, params);
+        }
     }], [{
         key: "select",
         value: function select($select) {
-            new SelectStyler($select);
+            var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+            new SelectStyler($select, params);
         }
     }, {
         key: "selectAll",
         value: function selectAll($selector) {
+            var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
             var selects = document.querySelectorAll($selector);
 
             selects.forEach(function ($select) {
-                SelectStyler.select($select);
+                SelectStyler.select($select, params);
             });
         }
     }]);
