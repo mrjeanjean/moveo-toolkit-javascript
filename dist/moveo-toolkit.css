@@ -1,3 +1,14 @@
+.tooltip {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  width: 150px;
+  padding: 1em;
+  color: #ffffff;
+  text-align: center; }
+  .tooltip.animated {
+    transition-duration: 100ms; }
+
 @charset "UTF-8";
 
 /*!
@@ -3591,14 +3602,3 @@
 
 .accordion .accordion-section.open .accordion-content {
   max-height: 999px; }
-
-.tooltip {
-  display: none;
-  background-color: rgba(0, 0, 0, 0.8);
-  position: absolute;
-  width: 150px;
-  padding: 1em;
-  color: #ffffff;
-  text-align: center; }
-  .tooltip.animated {
-    transition-duration: 100ms; }

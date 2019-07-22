@@ -5,6 +5,7 @@ import autoprefixer from 'autoprefixer';
 
 export default [{
     input: 'src/index.js',
+    context: 'window',
     output: [
         {
             file: "dist/moveo-toolkit.js",
@@ -22,11 +23,13 @@ export default [{
         }),
         babel({
             exclude: ['node_modules/**']
-        })
+        }),
+
     ]
 },
     {
         input: 'src/index.js',
+        context: 'window',
         output: [
             {
                 file: "dist/moveo-toolkit.esm.js",
@@ -44,7 +47,7 @@ export default [{
             }),
             babel({
                 exclude: ['node_modules/**']
-            })
+            }),
         ]
     }
 ]

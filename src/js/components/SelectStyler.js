@@ -20,8 +20,7 @@ class SelectStyler {
     }
 
     refreshValue() {
-        let value = this.$selectElement.value;
-
+        let value = CSS.escape(this.$selectElement.value);
         let currentSelect = this.$selectElement.querySelector("option[value='" + value + "'");
         this.$selectValue.innerText = currentSelect.innerText;
 
@@ -31,6 +30,7 @@ class SelectStyler {
             lis.classList.remove("active");
         }
 
+        console.log(CSS.escape(value));
         let active = this.$template.querySelector("li[data-option-id='"+ value +"'");
         active.classList.add("active");
     }

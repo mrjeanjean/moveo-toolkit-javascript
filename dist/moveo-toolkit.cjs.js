@@ -2,6 +2,8 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+//require('./css-escape.polyfill');
+
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -231,8 +233,7 @@ var SelectStyler = function () {
     }, {
         key: "refreshValue",
         value: function refreshValue() {
-            var value = this.$selectElement.value;
-
+            var value = CSS.escape(this.$selectElement.value);
             var currentSelect = this.$selectElement.querySelector("option[value='" + value + "'");
             this.$selectValue.innerText = currentSelect.innerText;
 
@@ -242,6 +243,7 @@ var SelectStyler = function () {
                 lis.classList.remove("active");
             }
 
+            console.log(CSS.escape(value));
             var active = this.$template.querySelector("li[data-option-id='" + value + "'");
             active.classList.add("active");
         }
@@ -427,9 +429,6 @@ var throttle = function throttle(func, wait, options) {
         return result;
     };
 };
-
-// Animation function
-// JQuery animate equivalent in pure js
 
 var ScrollSpy = function () {
     function ScrollSpy(params) {
