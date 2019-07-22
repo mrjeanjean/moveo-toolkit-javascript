@@ -239,9 +239,11 @@ var SelectStyler = function () {
                 lis.classList.remove("active");
             }
 
-            console.log(CSS.escape(value));
             var active = this.$template.querySelector("li[data-option-id='" + value + "'");
-            active.classList.add("active");
+
+            if (active !== null) {
+                active.classList.add("active");
+            }
         }
     }, {
         key: "onOptionSelect",
