@@ -215,8 +215,6 @@ var SelectStyler = function () {
 
         this.initSelect();
         this.initEvents();
-
-        this.reset = this.reset.bind(this);
     }
 
     createClass(SelectStyler, [{
@@ -236,7 +234,7 @@ var SelectStyler = function () {
                 _this.close();
             });
 
-            this.$selectElement.addEventListener("reset", this.reset);
+            this.$selectElement.addEventListener("reset", this.reset.bind(this));
         }
     }, {
         key: "reset",

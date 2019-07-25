@@ -7,8 +7,6 @@ class SelectStyler {
 
         this.initSelect();
         this.initEvents();
-
-        this.reset = this.reset.bind(this);
     }
 
     initSelect() {
@@ -23,7 +21,7 @@ class SelectStyler {
             this.close();
         });
 
-        this.$selectElement.addEventListener("reset", this.reset);
+        this.$selectElement.addEventListener("reset", this.reset.bind(this));
     }
 
     reset(){
