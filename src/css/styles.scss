@@ -3,6 +3,7 @@
 @import "components/popup";
 @import "components/tooltip";
 @import "components/accordion";
+@import "components/select-styler";
 
 
 .accordion{
@@ -17,6 +18,5 @@
     .accordion-content {
       max-height: 999px;
     }
-
   }
 }

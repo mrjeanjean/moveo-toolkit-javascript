@@ -6,10 +6,9 @@ class SelectStyler {
         this.$selectElement.style.display = 'none';
 
         this.initSelect();
+        this.initEvents();
 
-        document.body.addEventListener("click", ()=> {
-            this.close();
-        })
+        this.reset = this.reset.bind(this);
     }
 
     initSelect() {
@@ -17,6 +16,20 @@ class SelectStyler {
         this.$selectElement.parentNode.insertBefore(this.$template, this.$selectElement.nextSibling);
 
         this.refreshValue();
+    }
+
+    initEvents() {
+        document.body.addEventListener("click", ()=> {
+            this.close();
+        });
+
+        this.$selectElement.addEventListener("reset", this.reset);
+    }
+
+    reset(){
+        this.$template.remove();
+        this.$selectElement.value = "";
+        this.initSelect();
     }
 
     refreshValue() {
@@ -107,7 +120,6 @@ class SelectStyler {
             SelectStyler.select($select, params);
         });
     }
-
 }
 
 export default SelectStyler;

@@ -202,8 +202,6 @@ var Popup = function () {
 
 var SelectStyler = function () {
     function SelectStyler($select) {
-        var _this = this;
-
         var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
         classCallCheck(this, SelectStyler);
 
@@ -212,10 +210,9 @@ var SelectStyler = function () {
         this.$selectElement.style.display = 'none';
 
         this.initSelect();
+        this.initEvents();
 
-        document.body.addEventListener("click", function () {
-            _this.close();
-        });
+        this.reset = this.reset.bind(this);
     }
 
     createClass(SelectStyler, [{
@@ -225,6 +222,24 @@ var SelectStyler = function () {
             this.$selectElement.parentNode.insertBefore(this.$template, this.$selectElement.nextSibling);
 
             this.refreshValue();
+        }
+    }, {
+        key: "initEvents",
+        value: function initEvents() {
+            var _this = this;
+
+            document.body.addEventListener("click", function () {
+                _this.close();
+            });
+
+            this.$selectElement.addEventListener("reset", this.reset);
+        }
+    }, {
+        key: "reset",
+        value: function reset() {
+            this.$template.remove();
+            this.$selectElement.value = "";
+            this.initSelect();
         }
     }, {
         key: "refreshValue",
