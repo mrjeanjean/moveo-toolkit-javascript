@@ -255,6 +255,8 @@ var SelectStyler = function () {
                 this.$selectElement.value = optionValue;
             }
 
+            this.$selectElement.dispatchEvent(new Event('change'));
+
             this.refreshValue();
             this.close();
         }

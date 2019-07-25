@@ -149,6 +149,10 @@
         hideFirst: false
     });
 
+    document.querySelector("#select-demo").addEventListener("change", function(e){
+        console.log("Select has changed for value : ", e.target.value)
+    })
+
 
     new MoveoToolkit.ScrollSpy({
         onCurrentItemChange: function (id, item) {
