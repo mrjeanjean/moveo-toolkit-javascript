@@ -249,7 +249,14 @@
           key: "refreshValue",
           value: function refreshValue() {
               var value = CSS.escape(this.$selectElement.value);
-              var currentSelect = this.$selectElement.querySelector("option[value='" + value + "'");
+
+              var currentSelect = void 0;
+              if (value === "" || typeof value === "undefined") {
+                  currentSelect = this.$selectElement.querySelector("option");
+              } else {
+                  currentSelect = this.$selectElement.querySelector("option[value='" + value + "'");
+              }
+
               this.$selectValue.innerText = currentSelect.innerText;
 
               var lis = this.$template.querySelector("li.active");

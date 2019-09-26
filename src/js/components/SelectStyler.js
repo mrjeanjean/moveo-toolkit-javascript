@@ -32,7 +32,14 @@ class SelectStyler {
 
     refreshValue() {
         let value = CSS.escape(this.$selectElement.value);
-        let currentSelect = this.$selectElement.querySelector("option[value='" + value + "'");
+
+        let currentSelect;
+        if(value === "" || typeof value === "undefined"){
+            currentSelect = this.$selectElement.querySelector("option");
+        }else{
+            currentSelect = this.$selectElement.querySelector("option[value='" + value + "'");
+        }
+
         this.$selectValue.innerText = currentSelect.innerText;
 
         let lis = this.$template.querySelector("li.active");
