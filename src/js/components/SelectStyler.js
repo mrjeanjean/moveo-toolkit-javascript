@@ -33,6 +33,8 @@ class SelectStyler {
     refreshValue() {
         let value = CSS.escape(this.$selectElement.value);
 
+        console.log("LA VALUE", value);
+
         let currentSelect;
         if(value === "" || typeof value === "undefined"){
             currentSelect = this.$selectElement.querySelector("option");
@@ -48,7 +50,7 @@ class SelectStyler {
             lis.classList.remove("active");
         }
 
-        console.log("LA VALUE", value);
+
 
         let active;
         if(value === "" || typeof value === "undefined") {
