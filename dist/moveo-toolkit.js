@@ -256,7 +256,7 @@
               if (value === "" || typeof value === "undefined") {
                   currentSelect = this.$selectElement.querySelector("option");
               } else {
-                  currentSelect = this.$selectElement.querySelector("option[value='" + value + "'");
+                  currentSelect = this.$selectElement.querySelector("option[value='" + value + "']");
               }
 
               this.$selectValue.innerText = currentSelect.innerText;
@@ -271,7 +271,7 @@
               if (value === "" || typeof value === "undefined") {
                   active = this.$template.querySelector("li");
               } else {
-                  active = this.$template.querySelector("li[data-option-id='" + value + "'");
+                  active = this.$template.querySelector("li[data-option-id='" + value + "']");
               }
 
               if (active !== null) {
