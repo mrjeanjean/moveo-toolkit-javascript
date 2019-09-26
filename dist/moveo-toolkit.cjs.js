@@ -248,6 +248,8 @@ var SelectStyler = function () {
         value: function refreshValue() {
             var value = CSS.escape(this.$selectElement.value);
 
+            console.log("LA VALUE", value);
+
             var currentSelect = void 0;
             if (value === "" || typeof value === "undefined") {
                 currentSelect = this.$selectElement.querySelector("option");
@@ -262,8 +264,6 @@ var SelectStyler = function () {
             if (lis != null) {
                 lis.classList.remove("active");
             }
-
-            console.log("LA VALUE", value);
 
             var active = void 0;
             if (value === "" || typeof value === "undefined") {
