@@ -48,7 +48,14 @@ class SelectStyler {
             lis.classList.remove("active");
         }
 
-        let active = this.$template.querySelector("li[data-option-id='" + value + "'");
+        console.log("LA VALUE", value);
+
+        let active;
+        if(value === "" || typeof value === "undefined") {
+            active = this.$template.querySelector("li");
+        }else{
+            active = this.$template.querySelector("li[data-option-id='" + value + "'");
+        }
 
         if (active !== null) {
             active.classList.add("active");

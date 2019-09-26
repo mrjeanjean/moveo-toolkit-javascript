@@ -259,7 +259,14 @@ var SelectStyler = function () {
                 lis.classList.remove("active");
             }
 
-            var active = this.$template.querySelector("li[data-option-id='" + value + "'");
+            console.log("LA VALUE", value);
+
+            var active = void 0;
+            if (value === "" || typeof value === "undefined") {
+                active = this.$template.querySelector("li");
+            } else {
+                active = this.$template.querySelector("li[data-option-id='" + value + "'");
+            }
 
             if (active !== null) {
                 active.classList.add("active");
