@@ -250,8 +250,6 @@
           value: function refreshValue() {
               var value = CSS.escape(this.$selectElement.value);
 
-              console.log("LA VALUE", value);
-
               var currentSelect = void 0;
               if (value === "" || typeof value === "undefined") {
                   currentSelect = this.$selectElement.querySelector("option");
