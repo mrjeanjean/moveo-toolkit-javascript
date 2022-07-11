@@ -55,6 +55,10 @@
             max-width: 1000px;
             margin: 0 auto;
         }
+
+        .select-styler ul li.active{
+            background-color: #c6c6c6;
+        }
     </style>
 </head>
 <body>
@@ -146,7 +150,7 @@
 
 
     MoveoToolkit.SelectStyler.select(document.querySelector("#select-demo"), {
-        hideFirst: false
+        hideFirst: true
     });
 
     document.querySelector("#select-demo").addEventListener("change", function(e){

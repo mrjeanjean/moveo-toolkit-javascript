@@ -1,10 +1,8 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (factory((global.MoveoToolkit = {})));
-}(this, (function (exports) { 'use strict';
-
-  //require('./css-escape.polyfill');
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.MoveoToolkit = {}));
+})(this, (function (exports) { 'use strict';
 
   var classCallCheck = function (instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -266,13 +264,12 @@
               }
 
               var active = void 0;
-              if (value === "" || typeof value === "undefined") {
-                  active = this.$template.querySelector("li");
-              } else {
+
+              if (value !== "" && typeof value !== "undefined") {
                   active = this.$template.querySelector("li[data-option-id='" + value + "']");
               }
 
-              if (active !== null) {
+              if (active) {
                   active.classList.add("active");
               }
           }
@@ -518,8 +515,8 @@
               var itemBounds = item.getBoundingClientRect(),
                   windowTop = window.pageYOffset || document.documentElement.scrollTop,
                   windowBottom = windowTop + window.innerHeight,
-                  itemTop = itemBounds.top + windowTop,
-                  itemBottom = itemTop + item.offsetHeight;
+                  itemTop = itemBounds.top + windowTop;
+                  itemTop + item.offsetHeight;
 
               return itemTop < windowBottom && itemTop > windowTop;
           }
@@ -552,28 +549,12 @@
       return Accordion;
   }();
 
-  /*document.querySelectorAll(".menu a").forEach((link)=>{
-      link.addEventListener("click", (e)=>{
-          let anchor = e.target.getAttribute("href");
-          e.preventDefault();
-          animate({
-              duration: 300,
-              timing(timeFraction) {
-                  return timeFraction;
-              },
-              draw:(progress)=>{
-                  window.scrollTo(0, progress * 600);
-              }
-          })
-      })
-  });*/
-
+  exports.Accordion = Accordion;
   exports.Popup = Popup;
+  exports.ScrollSpy = ScrollSpy;
   exports.SelectStyler = SelectStyler;
   exports.Tooltip = Tooltip;
-  exports.ScrollSpy = ScrollSpy;
-  exports.Accordion = Accordion;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
-})));
+}));

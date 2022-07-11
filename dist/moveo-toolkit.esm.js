@@ -1,5 +1,3 @@
-//require('./css-escape.polyfill');
-
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -260,13 +258,12 @@ var SelectStyler = function () {
             }
 
             var active = void 0;
-            if (value === "" || typeof value === "undefined") {
-                active = this.$template.querySelector("li");
-            } else {
+
+            if (value !== "" && typeof value !== "undefined") {
                 active = this.$template.querySelector("li[data-option-id='" + value + "']");
             }
 
-            if (active !== null) {
+            if (active) {
                 active.classList.add("active");
             }
         }
@@ -512,8 +509,8 @@ var ScrollSpy = function () {
             var itemBounds = item.getBoundingClientRect(),
                 windowTop = window.pageYOffset || document.documentElement.scrollTop,
                 windowBottom = windowTop + window.innerHeight,
-                itemTop = itemBounds.top + windowTop,
-                itemBottom = itemTop + item.offsetHeight;
+                itemTop = itemBounds.top + windowTop;
+                itemTop + item.offsetHeight;
 
             return itemTop < windowBottom && itemTop > windowTop;
         }
@@ -546,20 +543,4 @@ var Accordion = function () {
     return Accordion;
 }();
 
-/*document.querySelectorAll(".menu a").forEach((link)=>{
-    link.addEventListener("click", (e)=>{
-        let anchor = e.target.getAttribute("href");
-        e.preventDefault();
-        animate({
-            duration: 300,
-            timing(timeFraction) {
-                return timeFraction;
-            },
-            draw:(progress)=>{
-                window.scrollTo(0, progress * 600);
-            }
-        })
-    })
-});*/
-
-export { Popup, SelectStyler, Tooltip, ScrollSpy, Accordion };
+export { Accordion, Popup, ScrollSpy, SelectStyler, Tooltip };

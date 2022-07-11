@@ -17,14 +17,14 @@ class SelectStyler {
     }
 
     initEvents() {
-        document.body.addEventListener("click", ()=> {
+        document.body.addEventListener("click", () => {
             this.close();
         });
 
         this.$selectElement.addEventListener("reset", this.reset.bind(this));
     }
 
-    reset(){
+    reset() {
         this.$template.remove();
         this.$selectElement.value = "";
         this.initSelect();
@@ -34,9 +34,9 @@ class SelectStyler {
         let value = CSS.escape(this.$selectElement.value);
 
         let currentSelect;
-        if(value === "" || typeof value === "undefined"){
+        if (value === "" || typeof value === "undefined") {
             currentSelect = this.$selectElement.querySelector("option");
-        }else{
+        } else {
             currentSelect = this.$selectElement.querySelector("option[value='" + value + "']");
         }
 
@@ -49,13 +49,12 @@ class SelectStyler {
         }
 
         let active;
-        if(value === "" || typeof value === "undefined") {
-            active = this.$template.querySelector("li");
-        }else{
+
+        if (value !== "" && typeof value !== "undefined") {
             active = this.$template.querySelector("li[data-option-id='" + value + "']");
         }
 
-        if (active !== null) {
+        if (active) {
             active.classList.add("active");
         }
     }
@@ -86,7 +85,7 @@ class SelectStyler {
         this.$selectValue = document.createElement("p");
         this.$selectValue.classList.add("select-value");
 
-        this.$selectValue.addEventListener("click", (e)=> {
+        this.$selectValue.addEventListener("click", (e) => {
             e.stopPropagation();
             $template.classList.toggle("open");
         });
@@ -98,7 +97,7 @@ class SelectStyler {
 
         let $options = this.$selectElement.querySelectorAll("option");
 
-        $options.forEach((option, index)=> {
+        $options.forEach((option, index) => {
             if (!this.params.hideFirst || index !== 0) {
                 let $option = document.createElement("li");
                 $option.textContent = option.textContent;
@@ -126,7 +125,7 @@ class SelectStyler {
     static selectAll($selector, params = {}) {
         let selects = document.querySelectorAll($selector);
 
-        selects.forEach(($select)=> {
+        selects.forEach(($select) => {
             SelectStyler.select($select, params);
         });
     }
